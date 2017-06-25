@@ -13,61 +13,68 @@ class ZeroAndX
 	def winner
 		#горизонталі
 		if @arr[0].count('X') == 3 #верхня горизонталь для першого юзера
-			print "WIIINNNNNN!!\n"
+			return true
 		elsif @arr[1].count('X') == 3 #середня горизонталь для першого юзера
-			print "WIIINNNNNN!!\n"
+			return true
 		elsif @arr[2].count('X') == 3 #нижня горизонталь для першого юзера
-			print "WIIINNNNNN!!\n"
+			return true
 		elsif @arr[0].count('O') == 3 #верхня горизонталь для другого юзера
-			print "WIIINNNNNN!!\n"
+			return true
 		elsif @arr[1].count('O') == 3 #середня горизонталь для другого юзера
-			print "WIIINNNNNN!!\n"
+			return true
 		elsif @arr[2].count('O') == 3 #нижня горизонталь для другого юзера
-			print "WIIINNNNNN!!\n"
+			return true
 		#діагоналі
-		elsif @arr[0][0] == "X" and @arr [1][1] == "X" && @arr [2][2] == "X" #діагональ зліва-направо для першого юзера
-			print "WINNNNNNNNNNNN!!!!\n"
-		elsif @arr[0][0] == "O" and @arr [1][1] == "O" && @arr [2][2] == "O" #діагональ зліва-направо для другого юзера
-			print "WINNNNNNNNNNNN!!!!\n"
-		elsif @arr[0][2] == "X" and @arr [1][1] == "X" && @arr [2][0] == "X" #діагональ справа-наліво для першого юзера
-			print "WINNNNNNNNNNNN!!!!\n"
-		elsif @arr[0][2] == "O" and @arr [1][1] == "O" && @arr [2][0] == "O" #діагональ справа-наліво для другого юзера
-			print "WINNNNNNNNNNNN!!!!\n"
+		elsif @arr[0][0] == "X" and @arr [1][1] == "X" and @arr [2][2] == "X" #діагональ зліва-направо для першого юзера
+			return true
+		elsif @arr[0][0] == "O" and @arr [1][1] == "O" and @arr [2][2] == "O" #діагональ зліва-направо для другого юзера
+			return true
+		elsif @arr[0][2] == "X" and @arr [1][1] == "X" and @arr [2][0] == "X" #діагональ справа-наліво для першого юзера
+			return true
+		elsif @arr[0][2] == "O" and @arr [1][1] == "O" and @arr [2][0] == "O" #діагональ справа-наліво для другого юзера
+			return true
 			#вертикалі
-		elsif @arr[0][0] == "X" and @arr [1][0] == "X" && @arr [2][0] == "X" #перша зліва вертикаль для першого юзера
-			print "WINNNNNNNNNNNN!!!!\n"
-		elsif @arr[0][0] == "O" and @arr [1][0] == "O" && @arr [2][0] == "O" #перша зліва вертикаль для другого юзера
-			print "WINNNNNNNNNNNN!!!!\n"
-		elsif @arr[0][1] == "X" and @arr [1][1] == "X" && @arr [2][1] == "X" #вертикаль посередині для першого юзера
-			print "WINNNNNNNNNNNN!!!!\n"
-		elsif @arr[0][1] == "O" and @arr [1][1] == "O" && @arr [2][1] == "O" #вертикаль посередині для другого юзера
-			print "WINNNNNNNNNNNN!!!!\n"
-		elsif @arr[0][2] == "X" and @arr [1][2] == "X" && @arr [2][2] == "X" #вертикаль справа для першого юзера
-			print "WINNNNNNNNNNNN!!!!\n"
-		elsif @arr[0][2] == "X" and @arr [1][2] == "X" && @arr [2][2] == "X" #вертикаль справа для другого юзера
-			print "WINNNNNNNNNNNN!!!!\n"
-		else
-			print "Equal fight!\n"
+		elsif @arr[0][0] == "X" and @arr [1][0] == "X" and @arr [2][0] == "X" #перша зліва вертикаль для першого юзера
+			return true
+		elsif @arr[0][0] == "O" and @arr [1][0] == "O" and @arr [2][0] == "O" #перша зліва вертикаль для другого юзера
+			return true
+		elsif @arr[0][1] == "X" and @arr [1][1] == "X" and @arr [2][1] == "X" #вертикаль посередині для першого юзера
+			return true
+		elsif @arr[0][1] == "O" and @arr [1][1] == "O" and @arr [2][1] == "O" #вертикаль посередині для другого юзера
+			return true
+		elsif @arr[0][2] == "X" and @arr [1][2] == "X" and @arr [2][2] == "X" #вертикаль справа для першого юзера
+			return true
+		elsif @arr[0][2] == "X" and @arr [1][2] == "X" and @arr [2][2] == "X" #вертикаль справа для другого юзера
+			return true
 		end
 	end
 	def gamee
 		print "Game start!\n"
-		for i in 0..5
+		for i in 0..4
 			print "User 1, your step:"
 			userOneStr = gets.gsub!(/\s+/, '')
 			userOneFirstChar = userOneStr[0].to_i
 			userOneSecondChar = userOneStr[1].to_i
-			@arr[userOneFirstChar-1][userOneSecondChar-1]="X"
+			@arr[userOneFirstChar][userOneSecondChar]="X"
 			show
 			winner
+			if winner == true
+				print "User 1, you are fuckin WINNNNNNNNNNNNNN!!\n"
+				break
+			end
 			print "User 2, your step:"
 			userTwoStr = gets.gsub!(/\s+/, '')
 			userTwoFirstChar = userTwoStr[0].to_i
 			userTwoSecondChar = userTwoStr[1].to_i
-			@arr[userTwoFirstChar-1][userTwoSecondChar-1]="O"
+			@arr[userTwoFirstChar][userTwoSecondChar]="O"
 			show
 			winner
+			if winner == true
+				print "User 2, you are fuckin WINNNNNNNNNNNNNN!!\n"
+				break
+			end
 		end
+		print "Equal fight!\n"
 	end
 end
 output = ZeroAndX.new
